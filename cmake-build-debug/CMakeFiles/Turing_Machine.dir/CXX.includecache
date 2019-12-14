@@ -1,0 +1,134 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h
+vector
+-
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest.h
+iosfwd
+-
+cstddef
+-
+ostream
+-
+ciso646
+-
+type_traits
+-
+doctest_fwd.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest_fwd.h
+ctime
+-
+cmath
+-
+climits
+-
+math.h
+-
+new
+-
+cstdio
+-
+cstdlib
+-
+cstring
+-
+limits
+-
+utility
+-
+fstream
+-
+sstream
+-
+iostream
+-
+algorithm
+-
+iomanip
+-
+vector
+-
+atomic
+-
+mutex
+-
+set
+-
+map
+-
+exception
+-
+stdexcept
+-
+csignal
+-
+cfloat
+-
+cctype
+-
+cstdint
+-
+sys/types.h
+-
+unistd.h
+-
+sys/sysctl.h
+-
+AfxWin.h
+-
+Windows.h
+-
+io.h
+-
+sys/time.h
+-
+unistd.h
+-
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/main.cpp
+doctest.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest.h
+tapeCell.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h
+tape.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h
+command.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h
+turingMachine.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/turingMachine.h
+alphabet.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h
+iostream
+-
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h
+tapeCell.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h
+alphabet.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h
+
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/turingMachine.h
+iostream
+-
+vector
+-
+string
+-
+tuple
+-
+command.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h
+tape.h
+/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h
+

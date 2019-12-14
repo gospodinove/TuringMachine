@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Turing_Machine"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Turing_Machine">
+				<Option output="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/Turing_Machine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 Turing_Machine"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Turing_Machine/fast">
+				<Option output="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/Turing_Machine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 Turing_Machine/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/gospodinove/Projects/Year-2-Term-1/Data\ Structures/Turing\ Machine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest.h">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/main.cpp">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/alphabet.cpp">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/command.cpp">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/tape.cpp">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/tapeCell.cpp">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/turingMachine.cpp">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/turingMachine.h">
+			<Option target="Turing_Machine"/>
+		</Unit>
+		<Unit filename="/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
