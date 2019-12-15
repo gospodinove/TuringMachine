@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h
+/Users/gospodinove/Projects/TuringMachine/alphabet.h
 vector
 -
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h
+/Users/gospodinove/Projects/TuringMachine/command.h
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest.h
+/Users/gospodinove/Projects/TuringMachine/doctest.h
 iosfwd
 -
 cstddef
@@ -24,7 +24,7 @@ ciso646
 type_traits
 -
 doctest_fwd.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest_fwd.h
+/Users/gospodinove/Projects/TuringMachine/doctest_fwd.h
 ctime
 -
 cmath
@@ -94,31 +94,31 @@ sys/time.h
 unistd.h
 -
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/main.cpp
+/Users/gospodinove/Projects/TuringMachine/main.cpp
 doctest.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/doctest.h
+/Users/gospodinove/Projects/TuringMachine/doctest.h
 tapeCell.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h
+/Users/gospodinove/Projects/TuringMachine/tapeCell.h
 tape.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h
+/Users/gospodinove/Projects/TuringMachine/tape.h
 command.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h
+/Users/gospodinove/Projects/TuringMachine/command.h
 turingMachine.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/turingMachine.h
+/Users/gospodinove/Projects/TuringMachine/turingMachine.h
 alphabet.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h
+/Users/gospodinove/Projects/TuringMachine/alphabet.h
 iostream
 -
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h
+/Users/gospodinove/Projects/TuringMachine/tape.h
 tapeCell.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h
+/Users/gospodinove/Projects/TuringMachine/tapeCell.h
 alphabet.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/alphabet.h
+/Users/gospodinove/Projects/TuringMachine/alphabet.h
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tapeCell.h
+/Users/gospodinove/Projects/TuringMachine/tapeCell.h
 
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/turingMachine.h
+/Users/gospodinove/Projects/TuringMachine/turingMachine.h
 iostream
 -
 vector
@@ -128,7 +128,7 @@ string
 tuple
 -
 command.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/command.h
+/Users/gospodinove/Projects/TuringMachine/command.h
 tape.h
-/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/tape.h
+/Users/gospodinove/Projects/TuringMachine/tape.h
 

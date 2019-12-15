@@ -12,9 +12,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a174f13-a0af-4ea3-b85e-ee2fca6e2eec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alphabet.h" beforeDir="false" afterPath="$PROJECT_DIR$/alphabet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/alphabet.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/alphabet.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/command.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/command.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tape.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tape.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tapeCell.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tapeCell.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/turingMachine.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/turingMachine.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Turing_Machine" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Turing_Machine" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Turing_Machine.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Turing_Machine.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/turingMachine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/turingMachine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tape.h" beforeDir="false" afterPath="$PROJECT_DIR$/tape.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turingMachine.h" beforeDir="false" afterPath="$PROJECT_DIR$/turingMachine.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +51,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TnuIIygfk7LttltUhR6zNl0j1w" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -50,7 +75,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -104,6 +129,8 @@
       <workItem from="1576276563806" duration="2249000" />
       <workItem from="1576317847719" duration="2975000" />
       <workItem from="1576321112374" duration="10506000" />
+      <workItem from="1576366835926" duration="55000" />
+      <workItem from="1576425247244" duration="7579000" />
     </task>
     <servers />
   </component>
@@ -123,54 +150,64 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$" />
+    </ignored-roots>
+  </component>
   <component name="WindowStateProjectService">
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576325279037">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1576325279037" />
-    <state width="1398" height="188" key="GridCell.Tab.0.bottom" timestamp="1576366081661">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576366081661" />
-    <state width="1398" height="586" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1576327252277" />
-    <state width="1398" height="188" key="GridCell.Tab.0.center" timestamp="1576366081660">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576366081660" />
-    <state width="1398" height="586" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1576327252276" />
-    <state width="1398" height="188" key="GridCell.Tab.0.left" timestamp="1576366081659">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576366081659" />
-    <state width="1398" height="586" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1576327252275" />
-    <state width="1398" height="188" key="GridCell.Tab.0.right" timestamp="1576366081660">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="188" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576366081660" />
-    <state width="1398" height="586" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1576327252277" />
-    <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1576364702327">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576364702327" />
-    <state width="1398" height="303" key="GridCell.Tab.1.center" timestamp="1576364702325">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1576364702325" />
-    <state width="1398" height="303" key="GridCell.Tab.1.left" timestamp="1576364702325">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1576364702325" />
-    <state width="1398" height="303" key="GridCell.Tab.1.right" timestamp="1576364702326">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1576364702326" />
-    <state x="221" y="100" key="SettingsEditor" timestamp="1575626173156">
+    <state x="303" y="49" key="CommitChangelistDialog2" timestamp="1576447800870">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1575626173156" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1576320971034">
+    <state x="303" y="49" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1576447800870" />
+    <state width="1398" height="188" key="GridCell.Tab.0.bottom" timestamp="1576440529753">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1576320971034" />
+    <state width="1398" height="188" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576440529753" />
+    <state width="1398" height="586" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1576327252277" />
+    <state width="1398" height="188" key="GridCell.Tab.0.center" timestamp="1576440529751">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="188" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576440529751" />
+    <state width="1398" height="586" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1576327252276" />
+    <state width="1398" height="188" key="GridCell.Tab.0.left" timestamp="1576440529751">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="188" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576440529751" />
+    <state width="1398" height="586" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1576327252275" />
+    <state width="1398" height="188" key="GridCell.Tab.0.right" timestamp="1576440529752">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="188" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576440529752" />
+    <state width="1398" height="586" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1576327252277" />
+    <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1576431571181">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576431571181" />
+    <state width="1398" height="303" key="GridCell.Tab.1.center" timestamp="1576431571180">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1576431571180" />
+    <state width="1398" height="303" key="GridCell.Tab.1.left" timestamp="1576431571179">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1576431571179" />
+    <state width="1398" height="303" key="GridCell.Tab.1.right" timestamp="1576431571180">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1576431571180" />
+    <state x="221" y="79" key="SettingsEditor" timestamp="1576425817683">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="79" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1576425817683" />
+    <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1575626173156" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1576440212053">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1576440212053" />
   </component>
 </project>

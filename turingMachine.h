@@ -13,9 +13,9 @@
 #include "tape.h"
 
 
-using TransitionUpdate = std::tuple<int, char, Command>;
+using Transition = std::tuple<char, int, char, Command>;
 using States = std::vector<std::string>;
-using Transitions = std::vector<std::vector<TransitionUpdate>>;
+using Transitions = std::vector<std::vector<Transition>>;
 
 class TuringMachine {
     Tape tape;
@@ -31,20 +31,24 @@ class TuringMachine {
     void printStates();
 
     bool isValidState(int id);
+    bool isValidTransition(Transition tr);
 public:
     TuringMachine();
-    explicit TuringMachine(Tape const &tape);
     TuringMachine(TuringMachine const &other);
     TuringMachine(Tape const &tape, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct);
+    TuringMachine(TuringMachine &t1, TuringMachine &t2); // composition
     TuringMachine& operator=(TuringMachine const &other);
     ~TuringMachine();
 
-    void move(char direction);
+    void move(char direction); // move the machine's head
     void writeOnCurrentCell(char data);
 
     Tape& getTape();
     TapeCell* getCurrentTapeCell();
 
+    // start the machine
+    // returns true if the input is accepted
+    // otherwise returns false
     bool start();
 };
 #endif //TURING_MACHINE_TURINGMACHINE_H

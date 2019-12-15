@@ -28,7 +28,7 @@ public:
 
     void print();
 
-    TapeCell* moveCurrent(char direction);
+    TapeCell* moveCurrent(char direction); // move current cell indicator
     void writeOnCurrent(char data);
 
     TapeCell* getHead();

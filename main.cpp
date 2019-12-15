@@ -7,13 +7,13 @@
 #include "alphabet.h"
 #include <iostream>
 
-//TEST_CASE("TapeCell class test") {
-//    TapeCell node;
-//    CHECK(node.getData() == ' ');
-//    CHECK(node.next == nullptr);
-//    CHECK(node.prev == nullptr);
-//}
-//
+TEST_CASE("TapeCell class test") {
+    TapeCell node;
+    CHECK(node.getData() == ' ');
+    CHECK(node.next == nullptr);
+    CHECK(node.prev == nullptr);
+}
+
 TEST_CASE("Tape class test && append/prepend functionality test") {
     Alphabet alphabet({'a', 'b', 'c'});
     Tape tape(alphabet, {'a', 'b', 'a', 'a', 'a'});
@@ -42,15 +42,13 @@ TEST_CASE("Command class test") {
     CHECK(c.getCommand() == 'R');
 }
 
-//TEST_CASE("Turing machine init") {
-//    Alphabet tapeAlphabet({'a'});
-//    Tape tape(tapeAlphabet);
-//
-//    TuringMachine tr1(tape);
-//    TuringMachine tr2;
-//
-//    CHECK(tr1.getTape().getHead() == tr1.getCurrentTapeCell());
-//}
+// Uncomment the next test to go through the process of defining the state machine yourself
+
+TEST_CASE("Turing machine init") {
+    TuringMachine tm;
+
+    CHECK(tm.getTape().getHead() == tm.getCurrentTapeCell());
+}
 
 TEST_CASE("Moving head of Turing machine") {
     Alphabet alphabet({'0', '1', ' '});
@@ -58,10 +56,10 @@ TEST_CASE("Moving head of Turing machine") {
     Tape tape(alphabet, content);
 
     std::vector<std::string> states = {"A", "B", "C", "Reject", "Accept"};
-    std::vector<std::vector<std::tuple<int, char, Command>>> transitions = {
-        {{1, '0', Command('R')}, {3, '1', Command('R')}, {3, ' ', Command('R')}},
-        {{2, '0', Command('R')}, {1, '1', Command('R')}, {3, ' ', Command('R')}},
-        {{3, '0', Command('R')}, {3, '1', Command('R')}, {4, ' ', Command('R')}}
+    std::vector<std::vector<std::tuple<char, int, char, Command>>> transitions = {
+        {{'0', 1, '0', Command('R')}, {'1', 3, '1', Command('R')}, {' ', 3, ' ', Command('R')}},
+        {{'0', 2, '0', Command('R')}, {'1', 1, '1', Command('R')}, {' ', 3, ' ', Command('R')}},
+        {{'0', 3, '0', Command('R')}, {'1', 3, '1', Command('R')}, {' ', 4, ' ', Command('R')}}
     };
 
     TuringMachine tm(tape, states, transitions, 0, 4, 3);

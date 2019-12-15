@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/main.cpp" "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/main.cpp.o"
-  "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/alphabet.cpp" "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/alphabet.cpp.o"
-  "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/command.cpp" "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/command.cpp.o"
-  "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/tape.cpp" "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tape.cpp.o"
-  "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/tapeCell.cpp" "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tapeCell.cpp.o"
-  "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/src/turingMachine.cpp" "/Users/gospodinove/Projects/Year-2-Term-1/Data Structures/Turing Machine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/turingMachine.cpp.o"
+  "/Users/gospodinove/Projects/TuringMachine/main.cpp" "/Users/gospodinove/Projects/TuringMachine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/main.cpp.o"
+  "/Users/gospodinove/Projects/TuringMachine/src/alphabet.cpp" "/Users/gospodinove/Projects/TuringMachine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/alphabet.cpp.o"
+  "/Users/gospodinove/Projects/TuringMachine/src/command.cpp" "/Users/gospodinove/Projects/TuringMachine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/command.cpp.o"
+  "/Users/gospodinove/Projects/TuringMachine/src/tape.cpp" "/Users/gospodinove/Projects/TuringMachine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tape.cpp.o"
+  "/Users/gospodinove/Projects/TuringMachine/src/tapeCell.cpp" "/Users/gospodinove/Projects/TuringMachine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/tapeCell.cpp.o"
+  "/Users/gospodinove/Projects/TuringMachine/src/turingMachine.cpp" "/Users/gospodinove/Projects/TuringMachine/cmake-build-debug/CMakeFiles/Turing_Machine.dir/src/turingMachine.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

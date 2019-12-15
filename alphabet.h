@@ -22,7 +22,7 @@ public:
     std::vector<char> getLetters();
     void print();
 
-    void enter();
+    void enter(); // enter the letters in the alphabet
 };
 
 #endif //TURING_MACHINE_ALPHABET_H
