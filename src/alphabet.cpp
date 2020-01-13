@@ -8,10 +8,13 @@
 #include <iostream>
 
 Alphabet::Alphabet() {
-
+    addLetter(' ');
 }
 Alphabet::Alphabet(std::vector<char> letters) {
-    this->letters = std::move(letters);
+    addLetter(' ');
+    for (auto letter: letters) {
+        addLetter(letter);
+    }
 }
 Alphabet::Alphabet(Alphabet const &other) {
     letters = other.letters;

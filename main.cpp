@@ -5,6 +5,7 @@
 #include "command.h"
 #include "turingMachine.h"
 #include "alphabet.h"
+#include "parser.h"
 #include <iostream>
 
 TEST_CASE("TapeCell class test") {
@@ -22,7 +23,7 @@ TEST_CASE("Tape class test && append/prepend functionality test") {
 }
 
 TEST_CASE("Alphabet and checking if letter is in alphabet") {
-    std::vector<char> test = {'a', ' '};
+    std::vector<char> test = {' ', 'a'};
     Alphabet a, b(test);
 
     a.addLetter('a');
@@ -44,11 +45,11 @@ TEST_CASE("Command class test") {
 
 // Uncomment the next test to go through the process of defining the state machine yourself
 
-TEST_CASE("Turing machine init") {
-    TuringMachine tm;
-
-    CHECK(tm.getTape().getHead() == tm.getCurrentTapeCell());
-}
+//TEST_CASE("Turing machine init") {
+//    TuringMachine tm;
+//
+//    CHECK(tm.getTape().getHead() == tm.getCurrentTapeCell());
+//}
 
 TEST_CASE("Moving head of Turing machine") {
     Alphabet alphabet({'0', '1', ' '});
@@ -63,7 +64,26 @@ TEST_CASE("Moving head of Turing machine") {
     };
 
     TuringMachine tm(tape, states, transitions, 0, 4, 3);
-    if (tm.start()) std::cout<<"Accepted";
-    else std::cout<<"Rejected";
+    if (tm.start()) std::cout<<"Accepted\n";
+    else std::cout<<"Rejected\n";
+}
+
+TEST_CASE("Reading Turing Machine from file") {
+    std::string filePath = "/Users/gospodinove/CLionProjects/TuringMachine/input.csv";
+    std::vector<TuringMachine*> tms;
+
+    Parser parser(filePath, tms);
+
+    std::string parsingMessage = parser.parse();
+    if (parsingMessage != "none") {
+        std::cout<<"Parsing error: "<<parsingMessage<<"\n";
+    } else {
+        if (tms[0]->start()) std::cout<<"Accepted\n";
+        else std::cout<<"Rejected\n";
+        if (tms[1]->start()) std::cout<<"Accepted\n";
+        else std::cout<<"Rejected\n";
+        if (tms[2]->start()) std::cout<<"Accepted\n";
+        else std::cout<<"Rejected\n";
+    }
 }
 

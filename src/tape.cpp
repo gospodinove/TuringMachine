@@ -19,17 +19,19 @@ Tape::Tape(const Alphabet& alphabet) {
     this->alphabet = alphabet;
 
     head = nullptr;
+    append(' ');
     current = head;
 }
 Tape::Tape(const Alphabet &alphabet, const std::vector<char> &content) {
     this->alphabet = alphabet;
 
     head = nullptr;
-    current = head;
 
     for (char letter : content) {
         append(letter);
     }
+
+    current = head;
 }
 Tape& Tape::operator=(Tape const &other) {
     if (this != &other) {

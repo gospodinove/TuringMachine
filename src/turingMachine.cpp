@@ -23,8 +23,7 @@ TuringMachine::TuringMachine(TuringMachine const &other) {
     rejectState = other.rejectState;
     currentState = other.currentState;
 }
-TuringMachine::TuringMachine(Tape const &tape, States const &states, Transitions const &transitions, int const &start,
-                             int const &acpt, int const &rjct) {
+TuringMachine::TuringMachine(Tape const &tape, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct) {
     bool shouldAcceptTransitions = true;
 
     this->tape = tape;
@@ -244,4 +243,19 @@ bool TuringMachine::start() {
     }
 
     return currentState == acceptState;
+}
+
+void TuringMachine::printTransitions() {
+    for (int i = 0; i < transitions.size(); i++) {
+        for (auto transition: transitions[i]) {
+            std::cout<<std::get<0>(transition);
+            std::cout<<states[i];
+            std::cout<<"->";
+            std::cout<<std::get<2>(transition);
+            std::cout<<states[std::get<1>(transition)];
+            std::cout<<std::get<3>(transition).getCommand();
+            std::cout<<",";
+        }
+        std::cout<<std::endl;
+    }
 }

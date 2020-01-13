@@ -50,5 +50,7 @@ public:
     // returns true if the input is accepted
     // otherwise returns false
     bool start();
+
+    void printTransitions();
 };
 #endif //TURING_MACHINE_TURINGMACHINE_H
