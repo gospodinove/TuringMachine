@@ -4,16 +4,15 @@
 
 #include "../parser.h"
 
-Parser::Parser(const std::string& fileAddress, std::vector<TuringMachine*>& tms) : machines(tms) {
+Parser::Parser(const std::string& fileAddress) {
     this->fileAddress = fileAddress;
-    machineIndex = 0;
+    this->machine = nullptr;
+    startingState = 0;
+    rejectingState = 0;
+    acceptingState = 0;
 }
 
-Parser::~Parser() {
-    for (auto machine: machines) {
-        delete machine;
-    }
-}
+Parser::~Parser() = default;
 
 std::string Parser::parse() {
     if (!isValidFile()) return "Invalid file";
@@ -30,34 +29,33 @@ std::string Parser::parse() {
     // generate the tape with the alphabet
     Tape tape(alphabet, input);
 
-    parseMessage = parseExecutionChoice(file);
+//    parseMessage = parseExecutionChoice(file);
+//    if (!parseMessage.empty()) return parseMessage;
+
+    parseMessage = parseStates(file);
     if (!parseMessage.empty()) return parseMessage;
 
-    while (!file.eof()) {
-        parseMessage = parseStates(file);
-        if (!parseMessage.empty()) return parseMessage;
+    parseMessage = parseStartingState(file);
+    if (!parseMessage.empty()) return parseMessage;
 
-        parseMessage = parseStartingState(file);
-        if (!parseMessage.empty()) return parseMessage;
+    parseMessage = parseAcceptingState(file);
+    if (!parseMessage.empty()) return parseMessage;
 
-        parseMessage = parseAcceptingState(file);
-        if (!parseMessage.empty()) return parseMessage;
+    parseMessage = parseRejectingState(file);
+    if (!parseMessage.empty()) return parseMessage;
 
-        parseMessage = parseRejectingState(file);
-        if (!parseMessage.empty()) return parseMessage;
+    parseMessage = parseTransitions(file);
+    if (!parseMessage.empty()) return parseMessage;
 
-        parseMessage = parseTransitions(file);
-        if (!parseMessage.empty()) return parseMessage;
-
-        auto tm = new TuringMachine(tape, statesForMachine[machineIndex], transitionsForMachine[machineIndex], startingStateForMachine[machineIndex], acceptingStateForMachine[machineIndex], rejectingStateForMachine[machineIndex]);
-        machineIndex++;
-
-        machines.push_back(tm);
-    }
+    machine = new TuringMachine(tape, states, transitions, startingState, acceptingState, rejectingState);
 
     file.close();
 
     return "none";
+}
+
+TuringMachine* Parser::getMachine() {
+    return machine;
 }
 
 std::string Parser::parseAlphabet(std::ifstream& file) {
@@ -110,14 +108,16 @@ std::string Parser::parseExecutionChoice(std::ifstream &file) {
     if (hasLineMultipleItems(currentLine)) return "No choice of execution provided";
     if (!isValidExecutionChoice(currentLine)) return "Invalid execution choice";
 
-    executionChoice = currentLine;
+//    executionChoice = currentLine;
 
     return "";
 }
 
 std::string Parser::parseStates(std::ifstream &file) {
     std::string currentLine;
-    States states;
+
+    // empty states
+    states.clear();
 
     getline(file, currentLine);
 
@@ -147,8 +147,6 @@ std::string Parser::parseStates(std::ifstream &file) {
         states.push_back(stateName);
     }
 
-    statesForMachine.push_back(states);
-
     return "";
 }
 
@@ -160,7 +158,7 @@ std::string Parser::parseStartingState(std::ifstream &file) {
     if (hasLineMultipleItems(currentLine)) return "No starting state provided";
     if (!isValidState(currentLine)) return "Non-existеnt starting state selected";
 
-    startingStateForMachine.push_back(getStateIndex(currentLine));
+    startingState = getStateIndex(currentLine);
 
     return "";
 }
@@ -173,7 +171,7 @@ std::string Parser::parseAcceptingState(std::ifstream &file) {
     if (hasLineMultipleItems(currentLine)) return "No accepting state provided";
     if (!isValidState(currentLine)) return "Non-existent accepting state selected";
 
-    acceptingStateForMachine.push_back(getStateIndex(currentLine));
+    acceptingState = getStateIndex(currentLine);
 
     return "";
 }
@@ -186,18 +184,22 @@ std::string Parser::parseRejectingState(std::ifstream &file) {
     if (hasLineMultipleItems(currentLine)) return "No rejecting state provided";
     if (!isValidState(currentLine)) return "Non-existеnt rejecting state selected";
 
-    rejectingStateForMachine.push_back(getStateIndex(currentLine));
+    rejectingState = getStateIndex(currentLine);
 
     return "";
 }
 
 std::string Parser::parseTransitions(std::ifstream &file) {
     std::string currentLine;
-    Transitions transitions;
+
+    // empty the transitions
+    transitions.clear();
 
     while (getline(file, currentLine) && currentLine != ".") {
         int transitionsCount = std::count(currentLine.begin(), currentLine.end(), ',') + 1;
+        std::string currentState;
         std::vector<Transition> currentStateTransitions;
+        std::pair<std::string, std::vector<Transition>> currentStateTransitionsPair;
 
         int currentStateIndex = 0;
 
@@ -208,6 +210,10 @@ std::string Parser::parseTransitions(std::ifstream &file) {
             currentLine.erase(0, commaIndex + 1);
 
             char currentTapeCellContent = transitionString.front();
+
+            // check if the current tape cell content is in the alphabet
+            if (!alphabet.hasLetter(currentTapeCellContent)) return "Usage of bad letter for: " + transitionString;
+
             // erasing the current tape cell content from the line
             transitionString.erase(0, 1);
 
@@ -224,7 +230,7 @@ std::string Parser::parseTransitions(std::ifstream &file) {
                 return "Non-existent state selected for: " + transitionString;
             }
 
-            std::string currentState = transitionString.substr(0, transitionString.find('}') + 1);
+            currentState = transitionString.substr(0, transitionString.find('}') + 1);
 
             if (!isValidState(currentState)) {
                 // put the current tape cell content back in front
@@ -251,10 +257,23 @@ std::string Parser::parseTransitions(std::ifstream &file) {
 
             // get the content to write on the cell
             char contentToWriteOnCell = transitionString.front();
+
+            if (!alphabet.hasLetter(contentToWriteOnCell)) {
+                // put '->' back in front
+                transitionString.insert(0, "->");
+                // put the current state back in front
+                transitionString.insert(0, currentState);
+                // put the current tape cell content back in front
+                transitionString.insert(0, 1, currentTapeCellContent);
+                return "Usage of bad letter for: " + transitionString;
+            }
+
             // erase the content to write on the cell
             transitionString.erase(0, 1);
 
             if (transitionString.front() != '{') {
+                // put the content to be written back in front
+                transitionString.insert(0, 1, contentToWriteOnCell);
                 // put '->' back in front
                 transitionString.insert(0, "->");
                 // put the current state back in front
@@ -277,7 +296,7 @@ std::string Parser::parseTransitions(std::ifstream &file) {
 
             std::string targetState = transitionString.substr(0, transitionString.find('}') + 1);
 
-            if (!isValidState(currentState)) {
+            if (!isValidState(targetState)) {
                 // put '->' back in front
                 transitionString.insert(0, "->");
                 // put the current state back in front
@@ -330,17 +349,11 @@ std::string Parser::parseTransitions(std::ifstream &file) {
             currentStateTransitions.push_back(currentTransition);
         }
 
-        // order the transitions so the position in the vector
-        // matches the index of the states in the states array
-        if (currentStateIndex > transitions.size()) {
-            transitions.push_back(currentStateTransitions);
-        } else {
-            auto position = transitions.begin() + currentStateIndex;
-            transitions.insert(position, currentStateTransitions);
-        }
-    }
+        currentStateTransitionsPair.first = currentState;
+        currentStateTransitionsPair.second = currentStateTransitions;
 
-    transitionsForMachine.push_back(transitions);
+        transitions.push_back(currentStateTransitionsPair);
+    }
 
     return "";
 }
@@ -362,8 +375,8 @@ bool Parser::isValidExecutionChoice(const std::string& choice) {
 }
 
 bool Parser::isValidState(const std::string& state) {
-    for (int i = 0; i < statesForMachine[machineIndex].size(); i++) {
-        if (statesForMachine[machineIndex][i] == state) return true;
+    for (int i = 0; i < states.size(); i++) {
+        if (states[i] == state) return true;
     }
 
     return false;
@@ -375,8 +388,8 @@ bool Parser::hasLineMultipleItems(const std::string &line) {
 
 int Parser::getStateIndex(const std::string& state) {
     int i;
-    for (i = 0; i < statesForMachine[machineIndex].size(); i++) {
-        if (statesForMachine[machineIndex][i] == state) break;
+    for (i = 0; i < states.size(); i++) {
+        if (states[i] == state) break;
     }
 
     return i;

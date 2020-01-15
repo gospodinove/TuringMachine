@@ -2,7 +2,6 @@
 // Created by Emanuil Gospodinov on 20.11.19.
 //
 
-#include <iostream>
 #include "../tape.h"
 
 Tape::Tape() {
@@ -41,7 +40,17 @@ Tape& Tape::operator=(Tape const &other) {
     }
     return *this;
 }
-Tape::~Tape() = default;
+// TODO: Make ~Tape() work
+Tape::~Tape() {
+//    if (this) {
+//        current = nullptr;
+//        while (head != nullptr) {
+//            TapeCell *move = head;
+//            head = head->next;
+//            if (move != nullptr) delete move;
+//        }
+//    }
+}
 
 void Tape::print() {
     TapeCell *fakeHead = head;
@@ -59,7 +68,7 @@ void Tape::append(char data) {
         return;
     }
 
-    TapeCell* newNode = new TapeCell();
+    auto* newNode = new TapeCell();
 
     newNode->setData(data);
 
@@ -86,7 +95,7 @@ void Tape::prepend(char data) {
         return;
     }
 
-    TapeCell* newNode = new TapeCell();
+    auto* newNode = new TapeCell();
 
     newNode->setData(data);
 
@@ -142,4 +151,22 @@ TapeCell* Tape::getCurrent() {
 
 Alphabet& Tape::getAlphabet() {
     return alphabet;
+}
+
+std::string Tape::getTapeContent() {
+    TapeCell *fakeHead = head;
+    std::string result = "";
+
+    while (fakeHead != nullptr)
+    {
+        result += fakeHead->getData();
+        result += ',';
+        fakeHead = fakeHead->next;
+    }
+    // remove the last ,
+    if (!result.empty()) {
+        result.pop_back();
+    }
+
+    return result;
 }

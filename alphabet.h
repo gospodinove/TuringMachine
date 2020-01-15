@@ -5,6 +5,7 @@
 #ifndef TURING_MACHINE_ALPHABET_H
 #define TURING_MACHINE_ALPHABET_H
 
+#include <iostream>
 #include <vector>
 
 class Alphabet {

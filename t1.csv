@@ -1,0 +1,9 @@
+1,0
+0,1,1,1,0
+{a},{b},{Accept},{c},{Reject}
+{a}
+{Accept}
+{Reject}
+0{a}->0{b}R,1{a}->1{Reject}R, {a}-> {Reject}R
+0{b}->0{c}R,1{b}->1{b}R, {b}-> {Reject}R
+0{c}->0{Reject}R,1{c}->1{Reject}R, {c}-> {Accept}R

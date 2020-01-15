@@ -5,6 +5,8 @@
 #ifndef TURING_MACHINE_TAPE_H
 #define TURING_MACHINE_TAPE_H
 
+#include <iostream>
+#include <string>
 #include "tapeCell.h"
 #include "alphabet.h"
 
@@ -34,5 +36,7 @@ public:
     TapeCell* getHead();
     TapeCell* getCurrent();
     Alphabet& getAlphabet();
+
+    std::string getTapeContent();
 };
 #endif //TURING_MACHINE_TAPE_H

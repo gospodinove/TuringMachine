@@ -23,11 +23,10 @@ TapeCell& TapeCell::operator=(TapeCell const &other) {
     }
     return *this;
 }
-TapeCell::~TapeCell()
-{
+TapeCell::~TapeCell() {
     next = nullptr;
     prev = nullptr;
-}
+};
 
 char TapeCell::getData() {
     return data;

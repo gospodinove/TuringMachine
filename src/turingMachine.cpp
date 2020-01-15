@@ -6,7 +6,7 @@
 
 using Transition = std::tuple<char, int, char, Command>;
 using States = std::vector<std::string>;
-using Transitions = std::vector<std::vector<Transition>>;
+using Transitions = std::vector<std::pair<std::string, std::vector<Transition>>>;
 
 TuringMachine::TuringMachine() {
     tape.getAlphabet().enter();
@@ -30,7 +30,7 @@ TuringMachine::TuringMachine(Tape const &tape, States const &states, Transitions
     this->states = states;
 
     for (auto row: transitions) {
-        for (Transition transition: row) {
+        for (Transition transition: row.second) {
             if (!isValidTransition(transition)) shouldAcceptTransitions = false;
         }
     }
@@ -48,35 +48,74 @@ TuringMachine::TuringMachine(Tape const &tape, States const &states, Transitions
     currentState = start;
 }
 // composition
-TuringMachine::TuringMachine(TuringMachine &t1, TuringMachine &t2) {
+TuringMachine::TuringMachine(TuringMachine* t1, TuringMachine* t2) {
+    // Composition -> T1(T2)
+
     // start state
-    startState = t1.startState;
+    startState = t2->startState;
     // accept state
-    acceptState = t1.states.size() - 1 + t2.acceptState;
+    acceptState = t2->states.size() + t1->acceptState;
     // reject state
-    rejectState = t1.states.size() - 1 + t2.rejectState;
+    rejectState = t2->states.size() + t1->rejectState;
+    // current state
+    currentState = startState;
+
     // states
-    states.insert(states.end(), t1.states.begin(), t1.states.end());
-    states.insert(states.end(), t2.states.begin(), t2.states.end());
+    // TODO: Check for state uniqueness
+    states.insert(states.end(), t2->states.begin(), t2->states.end());
+    states.insert(states.end(), t1->states.begin(), t1->states.end());
+
     // alphabet
-    tape.getAlphabet().getLetters().insert(
-            tape.getAlphabet().getLetters().end(),
-            t1.tape.getAlphabet().getLetters().begin(),
-            t1.tape.getAlphabet().getLetters().end());
-    tape.getAlphabet().getLetters().insert(
-            tape.getAlphabet().getLetters().end(),
-            t2.tape.getAlphabet().getLetters().begin(),
-            t2.tape.getAlphabet().getLetters().end());
+    for (auto letter : t1->tape.getAlphabet().getLetters()) {
+        tape.getAlphabet().addLetter(letter);
+    }
+
+    for (auto letter : t2->tape.getAlphabet().getLetters()) {
+        tape.getAlphabet().addLetter(letter);
+    }
+
     // transitions
     transitions.insert(
             transitions.end(),
-            t1.transitions.begin(),
-            t1.transitions.end());
+            t2->transitions.begin(),
+            t2->transitions.end());
     transitions.insert(
             transitions.end(),
-            t2.transitions.begin(),
-            t2.transitions.end());
-        // define the other "special" transitions
+            t1->transitions.begin(),
+            t1->transitions.end());
+
+    // getting the transitions of starting state of the outer machine and adding them
+    // to the transitions of the accepting state of the inner machine
+    std::vector<Transition> transiotionsToReplicate;
+    int i = -1;
+
+    do {
+        i++;
+        transiotionsToReplicate = t1->transitions[i].second;
+    } while (i < t1->transitions.size() && t1->transitions[i].first != t1->states[t1->startState]);
+
+    // correct the indexes of the transitions
+    for (int j = 0; j < transiotionsToReplicate.size(); j++) {
+        std::get<1>(transiotionsToReplicate[j]) = std::get<1>(transiotionsToReplicate[j]) + t2->states.size();
+    }
+
+    std::pair<std::string, std::vector<Transition>> transitionsPair = {t2->states[t2->acceptState], transiotionsToReplicate};
+
+    transitions.push_back(transitionsPair);
+
+    // make transitions from the inner reject state to the outer reject state
+    transitionsPair.first = t2->states[t2->rejectState];
+
+    // create the transitions
+    transiotionsToReplicate.clear();
+
+    for (auto letter : tape.getAlphabet().getLetters()) {
+        Transition tr = {letter, rejectState, letter, Command('S')};
+        transiotionsToReplicate.push_back(tr);
+    }
+
+    transitionsPair.second = transiotionsToReplicate;
+    transitions.push_back(transitionsPair);
 }
 TuringMachine& TuringMachine::operator=(TuringMachine const &other) {
     if (this != &other) {
@@ -90,9 +129,7 @@ TuringMachine& TuringMachine::operator=(TuringMachine const &other) {
     }
     return *this;
 }
-TuringMachine::~TuringMachine(){
-
-}
+TuringMachine::~TuringMachine() = default;
 
 void TuringMachine::move(char direction) {
     tape.moveCurrent(direction);
@@ -202,7 +239,7 @@ void TuringMachine::enterTransitions() {
             }
         }
 
-        transitions.push_back(currentStateTransitions);
+        transitions.push_back(std::pair(states[i], currentStateTransitions));
     }
 
     std::cout << "\n\n";
@@ -220,18 +257,25 @@ bool TuringMachine::isValidTransition(Transition tr) {
 
 bool TuringMachine::start() {
     while (currentState != acceptState && currentState != rejectState) {
-        int index = -1;
+        int i = -1,j = -1;
+        std::vector<Transition> currentStateTransitions;
         Transition update;
+
+        // select the transitions of the current state
+        do {
+            i++;
+            currentStateTransitions = transitions[i].second;
+        } while (i < transitions.size() && transitions[i].first != states[currentState]);
 
         char currentTapeCellContent = getCurrentTapeCell()->getData();
 
         do {
-            index++;
-            update = transitions[currentState][index];
-        } while (index < transitions[currentState].size() &&
-                 std::get<0>(transitions[currentState][index]) != currentTapeCellContent);
+            j++;
+            update = currentStateTransitions[j];
+        } while (j < currentStateTransitions.size() &&
+                 std::get<0>(currentStateTransitions[j]) != currentTapeCellContent);
 
-        if (index < transitions[currentState].size()) {
+        if (j < currentStateTransitions.size()) {
             currentState = std::get<1>(update);
             writeOnCurrentCell(std::get<2>(update));
             move(std::get<3>(update).getCommand());
@@ -245,17 +289,17 @@ bool TuringMachine::start() {
     return currentState == acceptState;
 }
 
-void TuringMachine::printTransitions() {
-    for (int i = 0; i < transitions.size(); i++) {
-        for (auto transition: transitions[i]) {
-            std::cout<<std::get<0>(transition);
-            std::cout<<states[i];
-            std::cout<<"->";
-            std::cout<<std::get<2>(transition);
-            std::cout<<states[std::get<1>(transition)];
-            std::cout<<std::get<3>(transition).getCommand();
-            std::cout<<",";
-        }
-        std::cout<<std::endl;
+std::string TuringMachine::writeTapeOnFile(const std::string &fileAddress) {
+    std::ofstream oldFile(fileAddress, std::ofstream::trunc);
+    oldFile.close();
+
+    std::ofstream newFile(fileAddress, std::ofstream::app);
+
+    if (newFile.good()) {
+        newFile << tape.getTapeContent();
+    } else {
+        return "Could not write on file: " + fileAddress;
     }
+
+    return "";
 }

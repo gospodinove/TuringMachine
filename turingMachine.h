@@ -6,6 +6,7 @@
 #define TURING_MACHINE_TURINGMACHINE_H
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 #include <tuple>
@@ -15,7 +16,7 @@
 
 using Transition = std::tuple<char, int, char, Command>;
 using States = std::vector<std::string>;
-using Transitions = std::vector<std::vector<Transition>>;
+using Transitions = std::vector<std::pair<std::string, std::vector<Transition>>>;
 
 class TuringMachine {
     Tape tape;
@@ -36,7 +37,8 @@ public:
     TuringMachine();
     TuringMachine(TuringMachine const &other);
     TuringMachine(Tape const &tape, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct);
-    TuringMachine(TuringMachine &t1, TuringMachine &t2); // composition
+    // composition
+    TuringMachine(TuringMachine* t1, TuringMachine* t2);
     TuringMachine& operator=(TuringMachine const &other);
     ~TuringMachine();
 
@@ -51,6 +53,6 @@ public:
     // otherwise returns false
     bool start();
 
-    void printTransitions();
+    std::string writeTapeOnFile(const std::string& fileAddress);
 };
 #endif //TURING_MACHINE_TURINGMACHINE_H

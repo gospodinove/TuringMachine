@@ -16,21 +16,20 @@
 
 using States = std::vector<std::string>;
 using Transition = std::tuple<char, int, char, Command>;
-using Transitions = std::vector<std::vector<Transition>>;
+using Transitions = std::vector<std::pair<std::string, std::vector<Transition>>>;
 
 class Parser {
-    int machineIndex;
     std::string fileAddress;
-    std::string executionChoice;
     Alphabet alphabet;
     std::vector<char> input;
 
-    std::vector<States> statesForMachine;
-    std::vector<Transitions> transitionsForMachine;
-    std::vector<int> startingStateForMachine;
-    std::vector<int> acceptingStateForMachine;
-    std::vector<int> rejectingStateForMachine;
-    std::vector<TuringMachine*>& machines;
+    States states;
+    Transitions transitions;
+    int startingState;
+    int acceptingState;
+    int rejectingState;
+
+    TuringMachine* machine;
 
     std::string parseAlphabet(std::ifstream& file);
     std::string parseExecutionChoice(std::ifstream& file);
@@ -48,10 +47,11 @@ class Parser {
 
     int getStateIndex(const std::string& state);
 public:
-    Parser(const std::string& fileAddress, std::vector<TuringMachine*>& tms);
+    Parser(const std::string& fileAddress);
     ~Parser();
 
     std::string parse();
+    TuringMachine* getMachine();
 };
 
 #endif //TURING_MACHINE_PARSER_H

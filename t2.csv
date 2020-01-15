@@ -1,0 +1,9 @@
+a,b
+b,a,a,a,b
+{A},{B},{C},{Rej},{Acc}
+{A}
+{Acc}
+{Rej}
+b{A}->b{B}R,a{A}->a{Rej}R, {A}-> {Rej}R
+b{B}->b{C}R,a{B}->a{B}R, {B}-> {Rej}R
+b{C}->b{Rej}R,a{C}->a{Rej}R, {C}-> {Acc}R

@@ -4,9 +4,6 @@
 
 #include "../alphabet.h"
 
-#include <utility>
-#include <iostream>
-
 Alphabet::Alphabet() {
     addLetter(' ');
 }
