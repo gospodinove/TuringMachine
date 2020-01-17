@@ -26,9 +26,6 @@ std::string Parser::parse() {
     parseMessage = parseInput(file);
     if (!parseMessage.empty()) return parseMessage;
 
-    // generate the tape with the alphabet
-    Tape tape(alphabet, input);
-
 //    parseMessage = parseExecutionChoice(file);
 //    if (!parseMessage.empty()) return parseMessage;
 
@@ -47,7 +44,7 @@ std::string Parser::parse() {
     parseMessage = parseTransitions(file);
     if (!parseMessage.empty()) return parseMessage;
 
-    machine = new TuringMachine(tape, states, transitions, startingState, acceptingState, rejectingState);
+    machine = new TuringMachine(alphabet, input, states, transitions, startingState, acceptingState, rejectingState);
 
     file.close();
 
@@ -199,7 +196,7 @@ std::string Parser::parseTransitions(std::ifstream &file) {
         int transitionsCount = std::count(currentLine.begin(), currentLine.end(), ',') + 1;
         std::string currentState;
         std::vector<Transition> currentStateTransitions;
-        std::pair<std::string, std::vector<Transition>> currentStateTransitionsPair;
+        std::pair<int, std::vector<Transition>> currentStateTransitionsPair;
 
         int currentStateIndex = 0;
 
@@ -349,7 +346,7 @@ std::string Parser::parseTransitions(std::ifstream &file) {
             currentStateTransitions.push_back(currentTransition);
         }
 
-        currentStateTransitionsPair.first = currentState;
+        currentStateTransitionsPair.first = getStateIndex(currentState);
         currentStateTransitionsPair.second = currentStateTransitions;
 
         transitions.push_back(currentStateTransitionsPair);

@@ -46,14 +46,6 @@ std::vector<char> Alphabet::getLetters() {
     return letters;
 }
 
-void Alphabet::print() {
-    std::cout<<"Alphabet: ";
-    for(int i = 0; i < letters.size(); i++) {
-        std::cout<<"'"<<letters[i]<<"' ";
-    }
-    std::cout<<"\n";
-}
-
 void Alphabet::enter() {
     char keepAddingAnswer;
 

@@ -6,7 +6,7 @@
 
 using Transition = std::tuple<char, int, char, Command>;
 using States = std::vector<std::string>;
-using Transitions = std::vector<std::pair<std::string, std::vector<Transition>>>;
+using Transitions = std::vector<std::pair<int, std::vector<Transition>>>;
 
 TuringMachine::TuringMachine() {
     tape.getAlphabet().enter();
@@ -23,10 +23,10 @@ TuringMachine::TuringMachine(TuringMachine const &other) {
     rejectState = other.rejectState;
     currentState = other.currentState;
 }
-TuringMachine::TuringMachine(Tape const &tape, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct) {
+TuringMachine::TuringMachine(const Alphabet& alphabet, const std::vector<char>& input, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct) {
     bool shouldAcceptTransitions = true;
 
-    this->tape = tape;
+    this->tape = Tape(alphabet, input);
     this->states = states;
 
     for (auto row: transitions) {
@@ -61,50 +61,64 @@ TuringMachine::TuringMachine(TuringMachine* t1, TuringMachine* t2) {
     currentState = startState;
 
     // states
-    // TODO: Check for state uniqueness
     states.insert(states.end(), t2->states.begin(), t2->states.end());
     states.insert(states.end(), t1->states.begin(), t1->states.end());
 
-    // alphabet
-    for (auto letter : t1->tape.getAlphabet().getLetters()) {
-        tape.getAlphabet().addLetter(letter);
+    // tape
+    std::vector<char> letters;
+    for (auto letter : t1->getTape().getAlphabet().getLetters()) {
+        letters.push_back(letter);
+    }
+    for (auto letter : t2->getTape().getAlphabet().getLetters()) {
+        letters.push_back(letter);
+    }
+    Alphabet alphabet(letters);
+
+    std::vector<char> content;
+    for (auto letter : t2->getTape().getContentVector()) {
+        content.push_back(letter);
+    }
+    for (auto letter : t1->getTape().getContentVector()) {
+        content.push_back(letter);
     }
 
-    for (auto letter : t2->tape.getAlphabet().getLetters()) {
-        tape.getAlphabet().addLetter(letter);
-    }
+    tape = Tape(alphabet, content);
 
     // transitions
-    transitions.insert(
-            transitions.end(),
-            t2->transitions.begin(),
-            t2->transitions.end());
-    transitions.insert(
-            transitions.end(),
-            t1->transitions.begin(),
-            t1->transitions.end());
+    transitions.insert(transitions.end(), t2->transitions.begin(), t2->transitions.end());
+    // adjusting state indexes in T1 transitions
+    Transitions additionalTransitions = t1->transitions;
 
-    // getting the transitions of starting state of the outer machine and adding them
-    // to the transitions of the accepting state of the inner machine
+    for (int i = 0; i < additionalTransitions.size(); i++) {
+        additionalTransitions[i].first += t2->states.size();
+
+        for (int j = 0; j < additionalTransitions[i].second.size(); j++) {
+            std::get<1>(additionalTransitions[i].second[j]) += t2->states.size();
+        }
+    }
+    transitions.insert(transitions.end(), additionalTransitions.begin(), additionalTransitions.end());
+
+    // getting the transitions of start state of the outer machine and adding them
+    // to the transitions of the accept state of the inner machine
     std::vector<Transition> transiotionsToReplicate;
     int i = -1;
 
     do {
         i++;
         transiotionsToReplicate = t1->transitions[i].second;
-    } while (i < t1->transitions.size() && t1->transitions[i].first != t1->states[t1->startState]);
+    } while (i < t1->transitions.size() && t1->transitions[i].first != t1->startState);
 
     // correct the indexes of the transitions
     for (int j = 0; j < transiotionsToReplicate.size(); j++) {
-        std::get<1>(transiotionsToReplicate[j]) = std::get<1>(transiotionsToReplicate[j]) + t2->states.size();
+        std::get<1>(transiotionsToReplicate[j]) += t2->states.size();
     }
 
-    std::pair<std::string, std::vector<Transition>> transitionsPair = {t2->states[t2->acceptState], transiotionsToReplicate};
+    std::pair<int, std::vector<Transition>> transitionsPair = {t2->acceptState, transiotionsToReplicate};
 
     transitions.push_back(transitionsPair);
 
     // make transitions from the inner reject state to the outer reject state
-    transitionsPair.first = t2->states[t2->rejectState];
+    transitionsPair.first = t2->rejectState;
 
     // create the transitions
     transiotionsToReplicate.clear();
@@ -129,7 +143,9 @@ TuringMachine& TuringMachine::operator=(TuringMachine const &other) {
     }
     return *this;
 }
-TuringMachine::~TuringMachine() = default;
+TuringMachine::~TuringMachine() {
+    tape.destroy();
+}
 
 void TuringMachine::move(char direction) {
     tape.moveCurrent(direction);
@@ -239,7 +255,7 @@ void TuringMachine::enterTransitions() {
             }
         }
 
-        transitions.push_back(std::pair(states[i], currentStateTransitions));
+        transitions.push_back(std::pair(i, currentStateTransitions));
     }
 
     std::cout << "\n\n";
@@ -265,7 +281,7 @@ bool TuringMachine::start() {
         do {
             i++;
             currentStateTransitions = transitions[i].second;
-        } while (i < transitions.size() && transitions[i].first != states[currentState]);
+        } while (i < transitions.size() && transitions[i].first != currentState);
 
         char currentTapeCellContent = getCurrentTapeCell()->getData();
 
@@ -286,7 +302,11 @@ bool TuringMachine::start() {
         }
     }
 
-    return currentState == acceptState;
+    tape.reset();
+    int finishState = currentState;
+    currentState = startState;
+
+    return finishState == acceptState;
 }
 
 std::string TuringMachine::writeTapeOnFile(const std::string &fileAddress) {
@@ -296,7 +316,7 @@ std::string TuringMachine::writeTapeOnFile(const std::string &fileAddress) {
     std::ofstream newFile(fileAddress, std::ofstream::app);
 
     if (newFile.good()) {
-        newFile << tape.getTapeContent();
+        newFile << tape.getContent();
     } else {
         return "Could not write on file: " + fileAddress;
     }

@@ -16,7 +16,7 @@
 
 using States = std::vector<std::string>;
 using Transition = std::tuple<char, int, char, Command>;
-using Transitions = std::vector<std::pair<std::string, std::vector<Transition>>>;
+using Transitions = std::vector<std::pair<int, std::vector<Transition>>>;
 
 class Parser {
     std::string fileAddress;

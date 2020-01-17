@@ -28,15 +28,17 @@ public:
     Tape& operator=(Tape const &other);
     ~Tape();
 
-    void print();
-
-    TapeCell* moveCurrent(char direction); // move current cell indicator
+    // move current cell indicator
+    TapeCell* moveCurrent(char direction);
     void writeOnCurrent(char data);
 
-    TapeCell* getHead();
     TapeCell* getCurrent();
     Alphabet& getAlphabet();
 
-    std::string getTapeContent();
+    std::string getContent();
+    std::vector<char> getContentVector();
+
+    void reset();
+    void destroy();
 };
 #endif //TURING_MACHINE_TAPE_H

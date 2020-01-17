@@ -16,7 +16,7 @@
 
 using Transition = std::tuple<char, int, char, Command>;
 using States = std::vector<std::string>;
-using Transitions = std::vector<std::pair<std::string, std::vector<Transition>>>;
+using Transitions = std::vector<std::pair<int, std::vector<Transition>>>;
 
 class TuringMachine {
     Tape tape;
@@ -33,20 +33,20 @@ class TuringMachine {
 
     bool isValidState(int id);
     bool isValidTransition(Transition tr);
-public:
-    TuringMachine();
-    TuringMachine(TuringMachine const &other);
-    TuringMachine(Tape const &tape, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct);
-    // composition
-    TuringMachine(TuringMachine* t1, TuringMachine* t2);
-    TuringMachine& operator=(TuringMachine const &other);
-    ~TuringMachine();
 
     void move(char direction); // move the machine's head
     void writeOnCurrentCell(char data);
 
     Tape& getTape();
     TapeCell* getCurrentTapeCell();
+public:
+    TuringMachine();
+    TuringMachine(TuringMachine const &other);
+    TuringMachine(const Alphabet& alphabet, const std::vector<char>& input, States const &states, Transitions const &transitions, int const &start, int const &acpt, int const &rjct);
+    // composition
+    TuringMachine(TuringMachine* t1, TuringMachine* t2);
+    TuringMachine& operator=(TuringMachine const &other);
+    ~TuringMachine();
 
     // start the machine
     // returns true if the input is accepted

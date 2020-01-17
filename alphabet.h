@@ -21,7 +21,6 @@ public:
     void addLetter(char letter);
 
     std::vector<char> getLetters();
-    void print();
 
     void enter(); // enter the letters in the alphabet
 };

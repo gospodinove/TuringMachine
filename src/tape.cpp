@@ -40,27 +40,24 @@ Tape& Tape::operator=(Tape const &other) {
     }
     return *this;
 }
-// TODO: Make ~Tape() work
 Tape::~Tape() {
-//    if (this) {
-//        current = nullptr;
-//        while (head != nullptr) {
-//            TapeCell *move = head;
-//            head = head->next;
-//            if (move != nullptr) delete move;
-//        }
-//    }
+    current = nullptr;
+    while (head != nullptr) {
+        TapeCell *move = head;
+        head->prev = nullptr;
+        head = head->next;
+        move = nullptr;
+    }
 }
 
-void Tape::print() {
-    TapeCell *fakeHead = head;
-    std::cout<<"\nTape looks like this: \n";
-    while (fakeHead != nullptr)
-    {
-        std::cout<<" '"<<fakeHead->getData()<<"' ";
-        fakeHead = fakeHead->next;
+void Tape::destroy() {
+    current = nullptr;
+    while (head != nullptr) {
+        TapeCell *move = head;
+        head->prev = nullptr;
+        head = head->next;
+        delete move;
     }
-    std::cout<<std::endl;
 }
 
 void Tape::append(char data) {
@@ -141,10 +138,6 @@ void Tape::writeOnCurrent(char data) {
     }
 }
 
-TapeCell* Tape::getHead() {
-    return head;
-}
-
 TapeCell* Tape::getCurrent() {
     return current;
 }
@@ -153,12 +146,11 @@ Alphabet& Tape::getAlphabet() {
     return alphabet;
 }
 
-std::string Tape::getTapeContent() {
+std::string Tape::getContent() {
     TapeCell *fakeHead = head;
-    std::string result = "";
+    std::string result;
 
-    while (fakeHead != nullptr)
-    {
+    while (fakeHead != nullptr) {
         result += fakeHead->getData();
         result += ',';
         fakeHead = fakeHead->next;
@@ -169,4 +161,20 @@ std::string Tape::getTapeContent() {
     }
 
     return result;
+}
+
+std::vector<char> Tape::getContentVector() {
+    std::vector<char> content;
+    TapeCell* temp = head;
+
+    while (temp != nullptr) {
+        content.push_back(temp->getData());
+        temp = temp->next;
+    }
+
+    return content;
+}
+
+void Tape::reset() {
+    current = head;
 }
